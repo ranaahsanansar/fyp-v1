@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
+  Alert,
   Box,
   Button,
+  Checkbox,
   Container,
   Divider,
   FormControl,
+  FormControlLabel,
   Grid,
   InputLabel,
   MenuItem,
@@ -16,7 +19,62 @@ import {
 import SellingRecords from "../components/SellingRecords";
 
 const SellProperty = () => {
-  const handleSubmit = () => { };
+
+  const [alert, setAlert] = useState({
+    status: false,
+    msg: "",
+    type: ""
+});
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const actualData = {
+      province: data.get('province'),
+      distric: data.get('distric'),
+      society: data.get('society'),
+      block: data.get('block'),
+      propertyId: data.get('propertyId'),
+      ownerFullName: data.get('ownerFullName'),
+      ownerCNIC: data.get('ownerCNIC'),
+      priceOfShare: data.get('priceOfShare'),
+      buyerCNIC: data.get('buyerCNIC'),
+      agree: data.get('agree')
+    }
+    console.log(actualData)
+    if (actualData.province && actualData.distric && actualData.society && actualData.block && actualData.propertyId && actualData.ownerFullName && actualData.ownerCNIC && actualData.priceOfShare && actualData.buyerCNIC && actualData.agree ) {
+      setAlert({
+        status: true,
+        msg: "Your Request is now generated! Contact to the land Inspector",
+        type: "success"
+    });
+      
+    } else {
+      // setError({ status: true, msg: "All Fields are Required", type: 'error' })
+      setAlert({
+        status: true,
+        msg: "All Fields are required!",
+        type: "error"
+    });
+    }
+  };
+
+  useEffect(() => {
+    if (alert.status === true) {
+      setTimeout(() => {
+
+        setAlert({
+          status: false,
+          msg: "",
+          type: ""
+        });
+
+      }, 5000);
+
+
+    }
+
+  })
 
   const [distric, setDistric] = useState('lahore');
   const [province, setProvince] = useState('punjab');
@@ -42,11 +100,19 @@ const SellProperty = () => {
     setSociety(event.target.value);
   };
 
+
+
   const glassMorphismStyle = {
     background: "rgba(255, 255, 255, 0.2)",
     boxShadow: " 0 4px 30px rgba(0, 0, 0, 0.1)",
     backdropFilter: "blur(5px)",
     border: "1px solid rgba(255, 255, 255, 0.3)",
+  };
+
+  const [checked, setChecked] = useState(false);
+
+  const handleCheck = (event) => {
+    setChecked(event.target.checked);
   };
 
 
@@ -97,6 +163,7 @@ const SellProperty = () => {
                         required
                         labelId="province-label"
                         id="province"
+                        name="province"
                         value={province}
                         label="province"
                         onChange={handleChangeProvience}
@@ -118,6 +185,7 @@ const SellProperty = () => {
                         required
                         labelId="distric-label"
                         id="distric"
+                        name="distric"
                         value={distric}
                         label="Distric"
                         onChange={handleChangeDistric}
@@ -138,6 +206,7 @@ const SellProperty = () => {
                         required
                         labelId="society-label"
                         id="society"
+                        name="society"
                         value={society}
                         label="society"
                         onChange={handleChangeSociety}
@@ -160,6 +229,7 @@ const SellProperty = () => {
                         required
                         labelId="block-label"
                         id="block"
+                        name="block"
                         value={block}
                         label="block"
                         onChange={handleChangeBlock}
@@ -182,6 +252,7 @@ const SellProperty = () => {
                         required
                         labelId="property-id-label"
                         id="propertyId"
+                        name="propertyId"
                         value={selectPropertyId}
                         label="propertyId"
                         onChange={handleChangePropertyId}
@@ -192,6 +263,18 @@ const SellProperty = () => {
                         <MenuItem value="999">999</MenuItem>
                       </Select>
                     </FormControl>
+                  </Grid>
+                  <Grid item sm={12} xs={12} md={6} lg={6}>
+                    <TextField
+                      margin="normal"
+                      fullWidth
+                      required
+                      id="sellerEmail"
+                      name="sellerEmail"
+                      label="Your Email"
+                      type="String"
+                    />
+                    <Typography fontSize='small' >Your email is important, You will recive request number through this email</Typography>
                   </Grid>
 
                   <Grid item sm={12} xs={12} md={6} lg={6}>
@@ -214,6 +297,7 @@ const SellProperty = () => {
                       name="ownerCNIC"
                       label="CNIC of Owner"
                       type="number"
+                      inputProps={{ min: 0  }}
                     />
                   </Grid>
 
@@ -227,6 +311,7 @@ const SellProperty = () => {
                       name="sharesAmmount"
                       label="Ammount of Shares"
                       type="number"
+                      inputProps={{ min: 0  }}
                     />
                   </Grid>
                   <Grid item sm={12} xs={12} md={6} lg={6}>
@@ -238,6 +323,7 @@ const SellProperty = () => {
                       name="priceOfShare"
                       label="Price of One Share"
                       type="number"
+                      inputProps={{ min: 0  }}
                     />
                   </Grid>
                   <Grid item sm={12} xs={12} md={6} lg={6}>
@@ -249,6 +335,20 @@ const SellProperty = () => {
                       name="buyerCNIC"
                       label="Buyer CNIC"
                       type="number"
+                      inputProps={{ min: 0  }}
+                    />
+                  </Grid>
+                  <Grid item sm={12} xs={12} md={12} lg={12}>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={checked}
+                          onChange={handleCheck}
+                          name="agree"
+                          color="primary"
+                        />
+                      }
+                      label="I Agree to this Transaction"
                     />
                   </Grid>
                 </Grid>
@@ -261,6 +361,8 @@ const SellProperty = () => {
                     Submit
                   </Button>
                 </Box>
+                {alert.status ? <Alert severity={alert.type} sx={{ mt: 3 }}>{alert.msg}</Alert> : ''}
+                
               </Box>
             </Box>
 
@@ -276,6 +378,7 @@ const SellProperty = () => {
                 </Box>
               </Stack>
             </Box>
+            
           </Stack>
         </Box>
       </Container>

@@ -96,9 +96,9 @@ const ListPropertiesSection = () => {
                     justifyContent="space-between"
                     padding="10px"
                   >
-                    <Box paddingX={2}>
+                    {/* <Box paddingX={2}>
                       <FavoriteBorderIcon fontSize="medium" />
-                    </Box>
+                    </Box> */}
                     <Box
                       display="flex"
                       paddingX={2}

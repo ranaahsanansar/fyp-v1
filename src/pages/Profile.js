@@ -54,7 +54,7 @@ const Profile = () => {
                 <Box>
                   <Grid container spacing={2} >
                     <Grid item xs={12} sm={3}>
-                      <Box  sx={{display: "flex" , backgroundColor: 'gray' , border: '2px solid gray' , padding: '10px' , borderRadius: '10px' }} >
+                      <Box  sx={{display: "flex" , backgroundColor: 'white' , border: '2px solid gray' , padding: '10px' , borderRadius: '10px' }} >
                         <Box>
                           <Typography
                           variant="h6"
@@ -79,7 +79,7 @@ const Profile = () => {
                     </Grid>
 
                     <Grid item xs={12} sm={3}>
-                    <Box  sx={{display: "flex" , backgroundColor:'gray' , border: '2px solid gray' , padding: '10px' , borderRadius: '10px' }} >
+                    <Box  sx={{display: "flex" , backgroundColor:'white' , border: '2px solid gray' , padding: '10px' , borderRadius: '10px' }} >
                       <Box>
                         <Typography
                           variant="h6"
@@ -110,7 +110,7 @@ const Profile = () => {
                     </Grid>
 
                     <Grid item xs={12} sm={3}>
-                    <Box  sx={{display: "flex" , backgroundColor: 'gray' , border: '2px solid gray' , padding: '10px' , borderRadius: '10px' }} >
+                    <Box  sx={{display: "flex" , backgroundColor: 'white' , border: '2px solid gray' , padding: '10px' , borderRadius: '10px' }} >
                       <Box>
                         <Typography
                           variant="h6"
@@ -141,7 +141,7 @@ const Profile = () => {
                     </Grid>
 
                     <Grid item xs={12} sm={3}>
-                    <Box  sx={{display: "flex" , backgroundColor: 'gray' , border: '2px solid gray' , padding: '10px' , borderRadius: '10px' }} >
+                    <Box  sx={{display: "flex" , backgroundColor: 'white' , border: '2px solid gray' , padding: '10px' , borderRadius: '10px' }} >
                       <Box>
                         <Typography
                           variant="h6"

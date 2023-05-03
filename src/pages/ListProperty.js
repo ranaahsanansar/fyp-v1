@@ -17,13 +17,16 @@ const ListProperty = () => {
   return (
     <div>
       <Box>
-        <Container>  
+        <Container>
           <Box mt={2}>
-            <Box sx={ [glassMorphismStyle , {borderRadius: 2 , padding: 2 }]}>
+            <Box sx={[glassMorphismStyle, { borderRadius: 2, padding: 2 }]}>
               <h1>My Listed Properties</h1>
             </Box>
             <Box mt={1}>
               <Button
+                variant="contained"
+                color="secondary"
+                sx={{ my: 2 }}
                 onClick={() => {
                   setDisplayForm(!displayForm);
                 }}
@@ -32,14 +35,14 @@ const ListProperty = () => {
               </Button>
             </Box>
             <Box>
-            {displayForm ? (
-              <AddProperty />
-            ) : ("")}
+              {displayForm ? (
+                <AddProperty />
+              ) : ("")}
             </Box>
 
             <Box
               mt={2}
-              
+
             >
               <Grid container spacing={2}>
                 <Grid item sm={6} xs={12} lg={4}>

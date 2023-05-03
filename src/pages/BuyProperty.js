@@ -23,8 +23,8 @@ const BuyProperty = () => {
     status: false,
     msg: "",
     type: ""
-});
-  const handleSubmit = async (e) => { 
+  });
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
     const actualData = {
@@ -38,20 +38,20 @@ const BuyProperty = () => {
       reqNumber: data.get('reqNumber'),
       agree: data.get('agree')
     }
-    if (actualData.province && actualData.distric && actualData.society && actualData.block && actualData.propertyId && actualData.ownerCNIC && actualData.sharesAmmount && actualData.reqNumber && actualData.agree ) {
+    if (actualData.province && actualData.distric && actualData.society && actualData.block && actualData.propertyId && actualData.ownerCNIC && actualData.sharesAmmount && actualData.reqNumber && actualData.agree) {
       setAlert({
         status: true,
         msg: "Your Request is now generated! Contact to the land Inspector",
         type: "success"
-    });
-      
+      });
+
     } else {
       // setError({ status: true, msg: "All Fields are Required", type: 'error' })
       setAlert({
         status: true,
         msg: "All Fields are required!",
         type: "error"
-    });
+      });
     }
   };
 
@@ -63,20 +63,20 @@ const BuyProperty = () => {
 
   useEffect(() => {
     if (alert.status === true) {
-        setTimeout(() => {
+      setTimeout(() => {
 
-          setAlert({
-            status: false,
-            msg: "",
-            type: ""
+        setAlert({
+          status: false,
+          msg: "",
+          type: ""
         });
 
-        }, 5000);
+      }, 5000);
 
-        
+
     }
 
-})
+  })
 
 
   const handleChangeProvience = (event) => {
@@ -329,4 +329,3 @@ const BuyProperty = () => {
 };
 
 export default BuyProperty;
-git config --global user.email "asn.cs21@gmail.com"

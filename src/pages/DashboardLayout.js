@@ -65,8 +65,8 @@ const DashboardLayout = () => {
       <Grid container  >
         <Grid
           item
-          lg={3}
-          md={3}
+          lg={2}
+          md={2}
           sx={{
             backgroundColor: "#3b444b",
             p: 2,
@@ -104,7 +104,7 @@ const DashboardLayout = () => {
             <Button
               component={NavLink}
               variant="contained"
-              to="/dashboard/profile"
+              to="profile"
               style={({ isActive }) => {
                 return { backgroundColor: isActive ? "#6d1b7b" : "" };
               }}
@@ -115,7 +115,7 @@ const DashboardLayout = () => {
             <Button
               component={NavLink}
               variant="contained"
-              to="/dashboard/listproperty"
+              to="listproperty"
               style={({ isActive }) => {
                 return { backgroundColor: isActive ? "#6d1b7b" : "" };
               }}
@@ -126,7 +126,7 @@ const DashboardLayout = () => {
             <Button
               component={NavLink}
               variant="contained"
-              to="/dashboard/buyPropertyBlockchain"
+              to="buyPropertyBlockchain"
               style={({ isActive }) => {
                 return { backgroundColor: isActive ? "#6d1b7b" : "" };
               }}
@@ -137,7 +137,7 @@ const DashboardLayout = () => {
             <Button
               component={NavLink}
               variant="contained"
-              to="/dashboard/sellPropertyBlockchain"
+              to="sellPropertyBlockchain"
               style={({ isActive }) => {
                 return { backgroundColor: isActive ? "#6d1b7b" : "" };
               }}
@@ -148,7 +148,7 @@ const DashboardLayout = () => {
             <Button
               component={NavLink}
               variant="contained"
-              to="/dashboard/changePassword"
+              to="changePassword"
               style={({ isActive }) => {
                 return { backgroundColor: isActive ? "#6d1b7b" : "" };
               }}
@@ -176,9 +176,10 @@ const DashboardLayout = () => {
             Logout
           </Button> */}
         </Grid>
-        <Grid item sm={12} lg={9} md={9} xs={12}
-        sx={{height: {lg: '90vh', md: '90vh' , sm: 'auto' , xs: 'auto'},
-        backgroundColor : "#353839",
+        <Grid item sm={12} lg={10} md={10} xs={12}
+        sx={{height: {lg: '90vh', md: '90vh' , sm: '90vh' , xs: '90vh'},
+        // backgroundColor : "#353839",
+        backgroundImage: 'linear-gradient(to left , #AE69B3 , #4868DB)',
         overflow: 'scroll' , '&::-webkit-scrollbar': {
           display: "none"
       },
